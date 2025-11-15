@@ -1,3 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <style>
+    .destination-item {
+        height: 300px; /* Set a fixed height for the container */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .destination-item img {
+        width: 100%; /* Ensure the image spans the full width */
+        height: 100%; /* Ensure the image spans the full height */
+        object-fit: cover; /* Crop the image to cover the container */
+    }
+    
+    .destination-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay */
+        transition: background-color 0.3s ease;
+    }
+    
+    .destination-overlay:hover {
+        background-color: rgba(0, 0, 0, 0.7); /* Darken overlay on hover */
+    }
+    
+    /* Autocomplete styles */
+    .autocomplete-results {
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+        border: 1px solid #ddd;
+        border-top: none;
+    }
+    
+    .autocomplete-item {
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .autocomplete-item:hover {
+        background-color: #f8f9fa;
+    }
+    
+    /* Dark mode styles */
+    body.dark-mode {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+    
+    body.dark-mode .bg-light {
+        background-color: #2d2d2d !important;
+    }
+    
+    body.dark-mode .navbar-light .navbar-brand,
+    body.dark-mode .navbar-light .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    body.dark-mode .navbar-light .navbar-nav .nav-link:hover {
+        color: #fff;
+    }
+    
+    body.dark-mode .bg-white {
+        background-color: #2d2d2d !important;
+    }
+    
+    body.dark-mode .text-dark {
+        color: #fff !important;
+    }
+    
+    body.dark-mode .shadow {
+        box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    body.dark-mode .autocomplete-item {
+        color: #fff;
+        background-color: #2d2d2d;
+        border-bottom: 1px solid #444;
+    }
+    
+    body.dark-mode .autocomplete-item:hover {
+        background-color: #3d3d3d;
+    }
+    
+    body.dark-mode .autocomplete-results {
+        border: 1px solid #444;
+        border-top: none;
+    }
+    </style>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!--<link href="stylechat.css" rel="stylesheet">-->
+
+
+    <meta charset="UTF-8">
+    <title>WeTour</title>
+</head>
+<body>
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img width=40px height=40px src="tour-guide.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h3 class="chatbox__heading--header">WeTour</h3>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button"><img width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/paper-plane.png" alt="paper-plane"/></button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img width="40" height="40" src="https://img.icons8.com/parakeet/48/chatbot.png" alt="chatbot"/></button>
+        </div>
+    </div>
+</div>
+
+    <script src="./app.js"></script>
+
+    <!-- Firebase -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        
         // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBgV_HTZnmaDd7pAYqCCRvatgHg_p3qyIs",
@@ -8,3 +174,995 @@
             appId: "1:416445254182:web:cfd4a7103a6a956c97f4e7",
             measurementId: "G-7WQ5N26TMZ"
         };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+        
+        // Expose Firebase functions to global scope
+        window.firebaseAuth = auth;
+        window.firebaseSignIn = () => signInWithPopup(auth, provider);
+        window.firebaseSignOut = () => signOut(auth);
+        window.firebaseDB = db;
+        
+        // Auth state listener
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                document.getElementById('user-name').textContent = user.displayName;
+                document.getElementById('user-photo').src = user.photoURL;
+                document.getElementById('user-info').style.display = 'block';
+                document.getElementById('sign-in-btn').style.display = 'none';
+            } else {
+                // User is signed out
+                document.getElementById('user-info').style.display = 'none';
+                document.getElementById('sign-in-btn').style.display = 'block';
+            }
+        });
+    </script>
+    
+    <!-- Autocomplete Search -->
+    <script>
+        // Sample destinations for autocomplete
+        const destinations = [
+            'Jaipur', 'Kashmir', 'Goa', 'Manali', 'Munnar', 'Kanyakumari',
+            'Udaipur', 'Jaisalmer', 'Leh', 'Sikkim', 'Darjeeling', 'Coorg',
+            'Andaman and Nicobar', 'Lakshadweep', 'Hampi', 'Mysore',
+            'Ooty', 'Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Kolkata',
+            'Hyderabad', 'Ahmedabad', 'Pune', 'Jaipur', 'Agra', 'Varanasi',
+            'Amritsar', 'Shimla', 'Nainital', 'Mussoorie', 'Rishikesh', 'Haridwar'
+        ];
+        
+        const searchInput = document.getElementById('destination-search');
+        const autocompleteResults = document.getElementById('autocomplete-results');
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            
+            // Clear previous results
+            autocompleteResults.innerHTML = '';
+            
+            if (query.length === 0) {
+                autocompleteResults.style.display = 'none';
+                return;
+            }
+            
+            // Filter destinations
+            const filteredDestinations = destinations.filter(dest => 
+                dest.toLowerCase().includes(query)
+            );
+            
+            // Display results
+            if (filteredDestinations.length > 0) {
+                filteredDestinations.forEach(dest => {
+                    const div = document.createElement('div');
+                    div.className = 'autocomplete-item p-2 border-bottom';
+                    div.textContent = dest;
+                    div.addEventListener('click', function() {
+                        searchInput.value = dest;
+                        autocompleteResults.style.display = 'none';
+                    });
+                    autocompleteResults.appendChild(div);
+                });
+                autocompleteResults.style.display = 'block';
+            } else {
+                autocompleteResults.style.display = 'none';
+            }
+        });
+        
+        // Hide autocomplete when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.autocomplete-container')) {
+                autocompleteResults.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Dark Mode Toggle -->
+    <script>
+        // Check for saved theme preference or respect device preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // If a saved theme exists, use it. Otherwise, use device preference
+        const currentTheme = savedTheme ? savedTheme : (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        // Apply the theme
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        document.getElementById('dark-mode-toggle').innerHTML = currentTheme === 'dark' ? 
+            '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        
+        // Toggle theme function
+        document.getElementById('dark-mode-toggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Toggle the dark mode class
+            document.body.classList.toggle('dark-mode');
+            
+            // Update the icon
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            this.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Save the current theme
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+    </script>
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
+                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="package.html" class="nav-item nav-link">Tour Packages</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                <a href="destination.html" class="dropdown-item">Destination</a>
+                                <a href="guide.html" class="dropdown-item">Travel Guides</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="plan-trip.html" class="dropdown-item">Plan My Trip</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="dashboard.html" class="nav-item nav-link">Dashboard</a>
+                        
+                        <!-- Dark Mode Toggle -->
+                        <a href="#" class="nav-item nav-link" id="dark-mode-toggle">
+                            <i class="fas fa-moon"></i>
+                        </a>
+                        
+                        <!-- Authentication -->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="user-info" data-toggle="dropdown" style="display: none;">
+                                <img id="user-photo" src="" alt="User" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                                <span id="user-name"></span>
+                            </a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="#" class="dropdown-item" onclick="firebaseSignOut()">Sign Out</a>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-item nav-link" id="sign-in-btn" onclick="firebaseSignIn()" style="display: block;">Sign In</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
+                            <h1 class="display-3 text-white mb-md-4">Let's Discover India Together</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
+                            <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-prev-icon mb-n2"></span>
+                </div>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-next-icon mb-n2"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- Booking Start -->
+    <div class="container-fluid booking mt-5 pb-5">
+        <div class="container pb-5">
+            <div class="bg-light shadow" style="padding: 30px;">
+                <div class="row align-items-center" style="min-height: 60px;">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="autocomplete-container position-relative">
+                                        <input type="text" id="destination-search" class="form-control p-4" placeholder="Search destination..." style="height: 47px;">
+                                        <div id="autocomplete-results" class="autocomplete-results position-absolute w-100 bg-white shadow" style="display: none; z-index: 1000;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date1" data-target-input="nearest">
+                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date2" data-target-input="nearest">
+                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Duration</option>
+                                        <option value="1">1 night</option>
+                                        <option value="2">2 nights</option>
+                                        <option value="3">3 nights</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button
+  class="btn btn-primary btn-block"
+  type="button"
+  style="height: 47px; margin-top: -2px;"
+  onclick="window.location.href='package.html';">
+  Submit
+</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
+                        <h1 class="mb-3">Discover Top-Rated Tour Packages That Fit Your Budget</h1>
+                        <p>Explore India’s diverse destinations without overspending. Whether you're seeking serene getaways, cultural journeys, or thrilling adventures, our curated packages offer unbeatable value. Experience hassle-free planning, expert guidance, and unforgettable memories—all within your price range.</p>
+                        
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/about-1.jpg" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/about-2.jpg" alt="">
+                            </div>
+                        </div>
+                        <a href="package.html" class="btn btn-primary mt-1">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+<div class="container-fluid pb-5">
+    <div class="container pb-5">
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="mb-2">Affordable Pricing</h5>
+                        <p class="m-0">We offer transparent and competitive packages to suit every traveler's budget—no hidden costs, just honest value.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-award text-white"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="mb-2">Premium Experiences</h5>
+                        <p class="m-0">From guided heritage walks to curated adventures, our services focus on quality, comfort, and authenticity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-globe text-white"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="mb-2">Pan-India Reach</h5>
+                        <p class="m-0">Whether it’s the Himalayas or coastal Kerala, explore every corner of India with our wide-reaching travel network.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End -->
+
+
+    <!-- Destination Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
+                <h1>Explore Top Destination</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/rajasthan.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="https://www.makemytrip.com/holidays-india/rajasthan-packages-from-ahmedabad.html">
+                            <h5 class="text-white">Jaipur</h5>
+        
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/kashmir.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="https://www.makemytrip.com/holidays-india/kashmir-tourism.html">
+                            <h5 class="text-white">Kashmir</h5>
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/goa.webp" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="https://www.makemytrip.com/holidays-india/goa-travel-packages.html?cmp=SEM|D|Holiday|G|Generic|DOM_India_Goa_UF|ETA|Regular|676020860133&s_kwcid=AL!1631!3!676020860133!p!!g!!%27goa%20trip%27&https://www.makemytrip.com/holidays-india/goa-travel-packages.html?cmp=SEM|D|Holiday|G|Generic|DOM_India_Goa_UF|ETA|Regular|676020860133&s_kwcid=AL!1631!3!676020860133!p!!g!!%27goa%20trip%27&gad_source=1&gbraid=0AAAAAD5Az1SRxKygTbNaDbLnOKkZ_XZYf&gclid=CjwKCAjw5PK_BhBBEiwAL7GTPSXbfv3Wsc766oHxVwhYHEuO0kw2rQDk4QzR--keJ-s8GvJq904sNxoCtXoQAvD_BwE">
+                            <h5 class="text-white">Goa</h5>
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/nt2.avif" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="https://www.makemytrip.com/holidays-india/north_east-travel-packages.html">
+                            <h5 class="text-white">Meghalaya</h5>
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/manali.avif" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="https://www.makemytrip.com/holidays-india/himachal_pradesh-travel-packages.html?cmp=SEM|D|Holiday|G|Generic|DOM_India_Himachal|Non_Brand_Himachal|RSA|Regular|611086159407&s_kwcid=AL!1631!3!611086159407!p!!g!!manali%20tourism%20package&ef_id=CjwKCAjw5PK_BhBBEiwAL7GTPR9BXMoK8qZKfnLWDfTwGVAnDXQ0PMut-AAshFcQztvnMw2ZpuwzGRoC6UQQAvD_BwE:G:s&gad_source=1&gbraid=0AAAAAD5Az1QaHkSqW3XeuAT-oIJHe9u3S&gclid=CjwKCAjw5PK_BhBBEiwAL7GTPR9BXMoK8qZKfnLWDfTwGVAnDXQ0PMut-AAshFcQztvnMw2ZpuwzGRoC6UQQAvD_BwE">
+                            <h5 class="text-white">Manali</h5>
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/raj2.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="https://www.makemytrip.com/holidays-india/rajasthan-packages-from-ahmedabad.html">
+                            <h5 class="text-white">Jaisalmer</h5>
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Destination Start -->
+
+
+   <!-- Service Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
+            <h1>Our Travel & Tour Offerings</h1>
+        </div>
+        <div class="row">
+            <!-- Service 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <i class="fa fa-2x fa-route mx-auto mb-4 text-primary"></i>
+                    <h5 class="mb-2">Expert Travel Guides</h5>
+                    <p class="m-0">Explore cities and cultures with our experienced local guides who bring stories, history, and hidden gems to life.</p>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <i class="fa fa-2x fa-ticket-alt mx-auto mb-4 text-primary"></i>
+                    <h5 class="mb-2">Seamless Ticket Booking</h5>
+                    <p class="m-0">Whether it's flights, trains, or attractions, book everything in one place—fast, easy, and secure.</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <i class="fa fa-2x fa-hotel mx-auto mb-4 text-primary"></i>
+                    <h5 class="mb-2">Comfortable Hotel Stays</h5>
+                    <p class="m-0">From boutique stays to luxury resorts, we offer a curated selection of accommodations across India.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+
+
+
+    <!-- Packages Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+                <h1>Pefect Tour Packages</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/raj2.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Jaipur</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="https://www.makemytrip.com/holidays-india/rajasthan-packages-from-ahmedabad.html">Discover amazing places of the world with us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">Rs.35,000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/kash2.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Kashmir</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="https://www.makemytrip.com/holidays-india/kashmir-tourism.html">Discover amazing places of India with us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">Rs.45,000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/goa.webp" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Goa</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="https://www.makemytrip.com/holidays-india/goa-travel-packages.html?cmp=SEM|D|Holiday|G|Generic|DOM_India_Goa_UF|ETA|Regular|676020860133&s_kwcid=AL!1631!3!676020860133!p!!g!!%27goa%20trip%27&https://www.makemytrip.com/holidays-india/goa-travel-packages.html?cmp=SEM|D|Holiday|G|Generic|DOM_India_Goa_UF|ETA|Regular|676020860133&s_kwcid=AL!1631!3!676020860133!p!!g!!%27goa%20trip%27&gad_source=1&gbraid=0AAAAAD5Az1SRxKygTbNaDbLnOKkZ_XZYf&gclid=CjwKCAjw5PK_BhBBEiwAL7GTPSXbfv3Wsc766oHxVwhYHEuO0kw2rQDk4QzR--keJ-s8GvJq904sNxoCtXoQAvD_BwE">Discover amazing places of India with us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">40,000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/nt2.avif" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Meghalaya</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="https://www.makemytrip.com/holidays-india/north_east-travel-packages.html">Discover amazing places of India with us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">Rs.35,000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/manali.avif" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Manali</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="https://www.makemytrip.com/holidays-india/himachal_pradesh-travel-packages.html?cmp=SEM|D|Holiday|G|Generic|DOM_India_Himachal|Non_Brand_Himachal|RSA|Regular|611086159407&s_kwcid=AL!1631!3!611086159407!p!!g!!manali%20tourism%20package&ef_id=CjwKCAjw5PK_BhBBEiwAL7GTPR9BXMoK8qZKfnLWDfTwGVAnDXQ0PMut-AAshFcQztvnMw2ZpuwzGRoC6UQQAvD_BwE:G:s&gad_source=1&gbraid=0AAAAAD5Az1QaHkSqW3XeuAT-oIJHe9u3S&gclid=CjwKCAjw5PK_BhBBEiwAL7GTPR9BXMoK8qZKfnLWDfTwGVAnDXQ0PMut-AAshFcQztvnMw2ZpuwzGRoC6UQQAvD_BwE">Discover amazing places of India with us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">Rs.35,000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/raj3.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Jaisalmer</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="https://www.makemytrip.com/holidays-india/rajasthan-packages-from-ahmedabad.html">Discover amazing places of india with us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">Rs.25,000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Packages End -->
+
+
+    <!-- Registration Start -->
+    <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
+                        <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
+                    </div>
+                    <p class="text-white">    Experience seamless travel planning with us. From personalized itineraries to expert support, we ensure every part of your journey is effortless, exciting, and unforgettable. Discover the joy of exploring India’s gems with complete peace of mind.</p>
+                    <ul class="list-inline text-white m-0">
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Customizable tour packages for every traveler</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>24/7 customer support throughout your journey</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Handpicked stays, guides & local experiences</li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-header bg-primary text-center p-4">
+                            <h1 class="text-white m-0">Sign Up Now</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-white p-5">
+                            <!-- Updated Form -->
+                            <form id="bookingForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control p-4" name="name" placeholder="Your name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control p-4" name="email" placeholder="Your email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="custom-select px-4" name="destination" style="height: 47px;" required>
+                                        <option value="" disabled selected>Select a destination</option>
+                                        <option value="Jaipur">Jaipur</option>
+                                        <option value="Kashmir">Kashmir</option>
+                                        <option value="Goa">Goa</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
+                                </div>
+                            </form>
+                            <!-- JavaScript to Handle Form Submission -->
+                            <script>
+                                document.getElementById("bookingForm").addEventListener("submit", async (event) => {
+                                    event.preventDefault();
+    
+                                    // Collect form data
+                                    const form = event.target;
+                                    const formData = {
+                                        name: form.name.value,
+                                        email: form.email.value,
+                                        destination: form.destination.value,
+                                    };
+    
+                                    try {
+                                        // Send data to backend
+                                        const response = await fetch("http://localhost:5000/submit-form", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify(formData),
+                                        });
+    
+                                        const result = await response.json();
+                                        if (response.ok) {
+                                            alert(result.message);
+                                            form.reset(); // Reset the form after success
+                                        } else {
+                                            alert("Failed to submit the form: " + result.message);
+                                        }
+                                    } catch (error) {
+                                        console.error("Error submitting form:", error);
+                                        alert("An error occurred while submitting the form.");
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Registration End -->
+
+
+<!-- Team Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Guides</h6>
+            <h1>Our Travel Experts</h1>
+        </div>
+        <div class="row">
+            <!-- Guide 1 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="Ravi Sharma, Varanasi Expert">
+                        <div class="team-social">
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">Ravi Sharma</h5>
+                        <p class="m-0">Cultural Guide – Varanasi</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Guide 2 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/user1.jpg" alt="Tsering Dolkar, Ladakh Adventure Guide">
+                        <div class="team-social">
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">Tsering Dolkar</h5>
+                        <p class="m-0">Adventure Guide – Ladakh</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Guide 3 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="Anjali Rao, Goa Beaches Specialist">
+                        <div class="team-social">
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">Anjali Rao</h5>
+                        <p class="m-0">Beach & Nightlife – Goa</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Guide 4 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/user3.jpg" alt="Karan Singh, Rajasthan Heritage Guide">
+                        <div class="team-social">
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">Karan Singh</h5>
+                        <p class="m-0">Heritage Guide – Rajasthan</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional guides can be added in a similar way -->
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+
+
+<!-- Testimonial Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonial</h6>
+            <h1>What Our Travellers Say</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            <!-- Testimonial 1 -->
+            <div class="text-center pb-4">
+                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;" alt="Aarav Mehta from Mumbai">
+                <div class="testimonial-text bg-white p-4 mt-n5">
+                    <p class="mt-5">“The spiritual experience in Varanasi was beyond words. Our guide Ravi made sure we saw the sunrise from the Ganges — simply magical!”</p>
+                    <h5 class="text-truncate">Aarav Mehta</h5>
+                    <span>Photographer, Mumbai</span>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="text-center pb-4">
+                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;" alt="Emily Jones from London">
+                <div class="testimonial-text bg-white p-4 mt-n5">
+                    <p class="mt-5">“Exploring Ladakh on a motorbike with the help of local experts was a dream come true. Every turn revealed breathtaking views!”</p>
+                    <h5 class="text-truncate">Emily Jones</h5>
+                    <span>Travel Blogger, London</span>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="text-center pb-4">
+                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-3.jpg" style="width: 100px; height: 100px;" alt="Kavita Desai from Pune">
+                <div class="testimonial-text bg-white p-4 mt-n5">
+                    <p class="mt-5">“Goa was the perfect escape — beautiful beaches, fun nightlife, and Anjali’s tips helped us explore hidden gems!”</p>
+                    <h5 class="text-truncate">Kavita Desai</h5>
+                    <span>Content Creator, Pune</span>
+                </div>
+            </div>
+            <!-- Testimonial 4 -->
+            <div class="text-center pb-4">
+                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-4.jpg" style="width: 100px; height: 100px;" alt="Marcus Tan from Singapore">
+                <div class="testimonial-text bg-white p-4 mt-n5">
+                    <p class="mt-5">“We toured Jaipur, Jodhpur, and Udaipur with Karan — every fort and palace had a story! Absolutely loved the Rajasthani hospitality.”</p>
+                    <h5 class="text-truncate">Marcus Tan</h5>
+                    <span>Architect, Singapore</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+    <!-- Blog Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>
+            <h1>Stories From Across India</h1>
+        </div>
+        <div class="row pb-3">
+            <!-- Blog Post 1 -->
+            <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                <div class="blog-item">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/raj2.jpg" alt="Sunset over Udaipur Lake">
+                        <div class="blog-date">
+                            <h6 class="font-weight-bold mb-n1">12</h6>
+                            <small class="text-white text-uppercase">Mar</small>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <div class="d-flex mb-2">
+                            <a class="text-primary text-uppercase text-decoration-none" href="#">Sunoy</a>
+                            <span class="text-primary px-2">|</span>
+                            <a class="text-primary text-uppercase text-decoration-none" href="#">Rajasthan</a>
+                        </div>
+                        <a class="h5 m-0 text-decoration-none" href="#">5 Things You Can’t Miss on Your First Trip to Udaipur</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                <div class="blog-item">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/ker2.jpg" alt="Houseboats in Kerala Backwaters">
+                        <div class="blog-date">
+                            <h6 class="font-weight-bold mb-n1">22</h6>
+                            <small class="text-white text-uppercase">Feb</small>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <div class="d-flex mb-2">
+                            <a class="text-primary text-uppercase text-decoration-none" href="#">Guest Author</a>
+                            <span class="text-primary px-2">|</span>
+                            <a class="text-primary text-uppercase text-decoration-none" href="#">Kerala</a>
+                        </div>
+                        <a class="h5 m-0 text-decoration-none" href="#">Exploring the Backwaters: A Dreamy Ride Through God’s Own Country</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                <div class="blog-item">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/manali.avif" alt="Snow covered peaks in Himachal">
+                        <div class="blog-date">
+                            <h6 class="font-weight-bold mb-n1">03</h6>
+                            <small class="text-white text-uppercase">Feb</small>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4">
+                        <div class="d-flex mb-2">
+                            <a class="text-primary text-uppercase text-decoration-none" href="#">Travel Editor</a>
+                            <span class="text-primary px-2">|</span>
+                            <a class="text-primary text-uppercase text-decoration-none" href="#">Himalayas</a>
+                        </div>
+                        <a class="h5 m-0 text-decoration-none" href="#">Why Winter in Himachal Pradesh Should Be on Your Bucket List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+    <div class="row pt-5">
+        <!-- Brand Info -->
+        <div class="col-lg-3 col-md-6 mb-5">
+            <a href="#" class="navbar-brand">
+                <h1 class="text-primary"><span class="text-white">We</span>Tour</h1>
+            </a>
+            <p>Explore the vibrant cultures, diverse landscapes, and timeless beauty of India with curated guides, expert tips, and immersive travel stories.</p>
+            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Site Navigation -->
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Quick Links</h5>
+            <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                <!-- <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a> -->
+                <a class="text-white-50 mb-2" href="guide.html"><i class="fa fa-angle-right mr-2"></i>Travel Guides</a>
+                <a class="text-white-50 mb-2" href="blog.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                <a class="text-white-50 mb-2" href="testimonial.html"><i class="fa fa-angle-right mr-2"></i>Testimonials</a>
+                <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+            </div>
+        </div>
+
+        <!-- Popular Destinations -->
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Top Destinations</h5>
+            <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Jaipur</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Varanasi</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Ladakh</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Goa</a>
+                <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Kerala</a>
+            </div>
+        </div>
+
+        <!-- Contact and Newsletter -->
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+            <p><i class="fa fa-map-marker-alt mr-2"></i>IIIT Surat, Gujarat, India</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>+91 98765 43210</p>
+            <p><i class="fa fa-envelope mr-2"></i>hello@WeTour.in</p>
+            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
+            <div class="w-100">
+                <div class="input-group">
+                    <input type="email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary px-3">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Copyright -->
+<div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(255, 255, 255, 0.1) !important;">
+    <div class="row">
+        <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+            <p class="m-0 text-white-50">&copy; 2025 <a href="#">WeTour</a>. All rights reserved.</p>
+        </div>
+        <div class="col-lg-6 text-center text-md-right">
+            <p class="m-0 text-white-50">Crafted with ❤️ by <a href="#">Team Sunio</a></p>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+    
+
+
+    <!-- Back to Top 
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>-->
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>

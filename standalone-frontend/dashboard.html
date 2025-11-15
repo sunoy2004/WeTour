@@ -1,3 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <title>WeTour - Dashboard</title>
+    
+    <style>
+        .trip-card {
+            transition: transform 0.3s ease;
+        }
+        .trip-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="package.html" class="nav-item nav-link">Tour Packages</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                <a href="destination.html" class="dropdown-item">Destination</a>
+                                <a href="guide.html" class="dropdown-item">Travel Guides</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="plan-trip.html" class="dropdown-item">Plan My Trip</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="dashboard.html" class="nav-item nav-link active">Dashboard</a>
+                        
+                        <!-- Dark Mode Toggle -->
+                        <a href="#" class="nav-item nav-link" id="dark-mode-toggle">
+                            <i class="fas fa-moon"></i>
+                        </a>
+                        
+                        <!-- Authentication -->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="user-info" data-toggle="dropdown" style="display: none;">
+                                <img id="user-photo" src="" alt="User" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                                <span id="user-name"></span>
+                            </a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="#" class="dropdown-item" onclick="firebaseSignOut()">Sign Out</a>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-item nav-link" id="sign-in-btn" onclick="firebaseSignIn()" style="display: block;">Sign In</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Dashboard Content Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h1 class="display-4">My Dashboard</h1>
+                    <p class="lead">Manage your trip plans and travel history</p>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">My Trip Plans</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="trip-plans-container" class="row">
+                                <!-- Trip plans will be loaded here -->
+                                <div class="col-12 text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">Loading your trip plans...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a href="plan-trip.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-plus mr-2"></i>Create New Trip Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard Content End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <!-- Brand Info -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">We</span>Tour</h1>
+                </a>
+                <p>Explore the vibrant cultures, diverse landscapes, and timeless beauty of India with curated guides, expert tips, and immersive travel stories.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Site Navigation -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Quick Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white-50 mb-2" href="guide.html"><i class="fa fa-angle-right mr-2"></i>Travel Guides</a>
+                    <a class="text-white-50 mb-2" href="blog.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2" href="testimonial.html"><i class="fa fa-angle-right mr-2"></i>Testimonials</a>
+                    <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                </div>
+            </div>
+
+            <!-- Popular Destinations -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Top Destinations</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Jaipur</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Varanasi</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Ladakh</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Goa</a>
+                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Kerala</a>
+                </div>
+            </div>
+
+            <!-- Contact and Newsletter -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>IIIT Surat, Gujarat, India</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+91 98765 43210</p>
+                <p><i class="fa fa-envelope mr-2"></i>hello@WeTour.in</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
+                <div class="w-100">
+                    <div class="input-group">
+                        <input type="email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-3">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(255, 255, 255, 0.1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white-50">&copy; 2025 <a href="#">WeTour</a>. All rights reserved.</p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Crafted with ❤️ by <a href="#">Team Sunio</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- Firebase -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        
         // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBgV_HTZnmaDd7pAYqCCRvatgHg_p3qyIs",
@@ -8,3 +225,162 @@
             appId: "1:416445254182:web:cfd4a7103a6a956c97f4e7",
             measurementId: "G-7WQ5N26TMZ"
         };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+        
+        // Expose Firebase functions to global scope
+        window.firebaseAuth = auth;
+        window.firebaseSignIn = () => signInWithPopup(auth, provider);
+        window.firebaseSignOut = () => signOut(auth);
+        window.firebaseDB = db;
+        
+        // DOM Elements
+        const userInfo = document.getElementById('user-info');
+        const userName = document.getElementById('user-name');
+        const userPhoto = document.getElementById('user-photo');
+        const signInBtn = document.getElementById('sign-in-btn');
+        const tripPlansContainer = document.getElementById('trip-plans-container');
+        
+        // Auth state listener
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                userName.textContent = user.displayName;
+                userPhoto.src = user.photoURL;
+                userInfo.style.display = 'block';
+                signInBtn.style.display = 'none';
+                
+                // Load trip plans
+                await loadTripPlans(user.uid);
+            } else {
+                // User is signed out
+                userInfo.style.display = 'none';
+                signInBtn.style.display = 'block';
+                
+                // Show sign-in message
+                tripPlansContainer.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <h4>Please sign in to view your trip plans</h4>
+                        <button class="btn btn-primary mt-3" onclick="firebaseSignIn()">Sign In with Google</button>
+                    </div>
+                `;
+            }
+        });
+        
+        // Load trip plans
+        async function loadTripPlans(userId) {
+            try {
+                const q = query(
+                    collection(db, "tripPlans"),
+                    where("userId", "==", userId),
+                    orderBy("createdAt", "desc")
+                );
+                
+                const querySnapshot = await getDocs(q);
+                
+                if (querySnapshot.empty) {
+                    tripPlansContainer.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <h4>You haven't planned any trips yet</h4>
+                            <p class="text-muted">Create your first trip plan to get started!</p>
+                            <a href="plan-trip.html" class="btn btn-primary mt-3">Plan My First Trip</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let tripPlansHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const trip = doc.data();
+                    tripPlansHTML += createTripCard(trip, doc.id);
+                });
+                
+                tripPlansContainer.innerHTML = tripPlansHTML;
+            } catch (error) {
+                console.error("Error loading trip plans:", error);
+                tripPlansContainer.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <h4>Error loading trip plans</h4>
+                        <p class="text-muted">Please try again later</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Create trip card HTML
+        function createTripCard(trip, id) {
+            return `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card trip-card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${trip.destination || 'Unknown Destination'}</h5>
+                            <p class="card-text flex-grow-1">
+                                <strong>Dates:</strong> ${trip.startDate || 'N/A'} to ${trip.endDate || 'N/A'}<br>
+                                <strong>Budget:</strong> ${trip.budget || 'N/A'}<br>
+                                <strong>Travelers:</strong> ${trip.travelers || 'N/A'}
+                            </p>
+                            <div class="mt-auto">
+                                <button class="btn btn-outline-primary btn-sm" onclick="viewTripDetails('${id}')">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // View trip details (placeholder function)
+        window.viewTripDetails = function(tripId) {
+            alert(`Viewing details for trip: ${tripId}\nIn a real application, this would show the full trip details.`);
+        };
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Dark Mode Toggle -->
+    <script>
+        // Check for saved theme preference or respect device preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // If a saved theme exists, use it. Otherwise, use device preference
+        const currentTheme = savedTheme ? savedTheme : (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        // Apply the theme
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        document.getElementById('dark-mode-toggle').innerHTML = currentTheme === 'dark' ? 
+            '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        
+        // Toggle theme function
+        document.getElementById('dark-mode-toggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Toggle the dark mode class
+            document.body.classList.toggle('dark-mode');
+            
+            // Update the icon
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            this.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Save the current theme
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
