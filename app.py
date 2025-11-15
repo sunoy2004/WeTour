@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
@@ -18,7 +18,20 @@ app.register_blueprint(travel_routes, url_prefix='/api/travel')
 
 @app.get("/")
 def index_get():
-    return render_template("base.html")
+    # Serve the new standalone frontend index.html
+    return send_from_directory('standalone-frontend', 'index.html')
+
+@app.get("/dashboard")
+@app.get("/dashboard.html")
+def dashboard_get():
+    # Serve the dashboard page
+    return send_from_directory('standalone-frontend', 'dashboard.html')
+
+@app.get("/plan-trip")
+@app.get("/plan-trip.html")
+def plan_trip_get():
+    # Serve the plan trip page
+    return send_from_directory('standalone-frontend', 'plan-trip.html')
 
 @app.post("/predict")
 def predict():
@@ -49,6 +62,31 @@ def submit_form():
             "error": str(e),
             "status": "error"
         }), 500
+
+# Serve static files from standalone-frontend subdirectories
+@app.route('/css/<path:filename>')
+def css_files(filename):
+    return send_from_directory('standalone-frontend/css', filename)
+
+@app.route('/js/<path:filename>')
+def js_files(filename):
+    return send_from_directory('standalone-frontend/js', filename)
+
+@app.route('/img/<path:filename>')
+def img_files(filename):
+    return send_from_directory('standalone-frontend/img', filename)
+
+@app.route('/lib/<path:filename>')
+def lib_files(filename):
+    return send_from_directory('standalone-frontend/lib', filename)
+
+@app.route('/scss/<path:filename>')
+def scss_files(filename):
+    return send_from_directory('standalone-frontend/scss', filename)
+
+@app.route('/mail/<path:filename>')
+def mail_files(filename):
+    return send_from_directory('standalone-frontend/mail', filename)
 
 # Trip plan submission endpoint
 @app.post("/submit-trip-plan")
