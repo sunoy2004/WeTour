@@ -39,3 +39,11 @@ Thumbs.db
 # Project specific
 *.pth
 data.json
+
+# Environment variables
+.env
+
+# Firebase
+.firebase/
+firestore-debug.log*
+ui-debug.log*

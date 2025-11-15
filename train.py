@@ -6,10 +6,10 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-from nltk_utils import bag_of_words, tokenize, stem
+from nltk_utils import bag_of_words, tokenize, stem, expand_synonyms
 from model import NeuralNet
 
-with open('intents_kc.json', 'r') as f:
+with open('intents.json', 'r') as f:
     intents = json.load(f)
 
 all_words = []
@@ -23,10 +23,15 @@ for intent in intents['intents']:
     for pattern in intent['patterns']:
         # tokenize each word in the sentence
         w = tokenize(pattern)
+        # expand with synonyms
+        expanded_pattern = expand_synonyms(pattern)
+        expanded_w = tokenize(expanded_pattern)
         # add to our words list
         all_words.extend(w)
+        all_words.extend(expanded_w)
         # add to xy pair
         xy.append((w, tag))
+        xy.append((expanded_w, tag))
 
 # stem and lower each word
 ignore_words = ['?', '.', '!']
@@ -92,6 +97,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 # Train the model
+loss = torch.tensor(0.0)  # Initialize loss variable
 for epoch in range(num_epochs):
     for (words, labels) in train_loader:
         words = words.to(device)

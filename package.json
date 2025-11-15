@@ -1,0 +1,29 @@
+{
+  "name": "wetour-main",
+  "version": "1.0.0",
+  "description": "----\r **WeTour** is a full-stack travel website designed to deliver curated tour packages across India, featuring a modern UI and an integrated chatbot. Users can explore top destinations, browse services, and interact with an intelligent travel assistant to enhance their travel planning experience.\r ---\r *View Live Page:* https://wetour.onrender.com\r ----",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd functions && npm run build",
+    "serve": "firebase emulators:start",
+    "deploy": "firebase deploy",
+    "firebase-login": "firebase login",
+    "firebase-init": "firebase init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunoy2004/WeTour.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sunoy2004/WeTour/issues"
+  },
+  "homepage": "https://github.com/sunoy2004/WeTour#readme",
+  "dependencies": {
+    "firebase": "^12.6.0"
+  }
+}

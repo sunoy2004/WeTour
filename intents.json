@@ -1,6 +1,41 @@
 {
   "intents": [
     {
+      "tag": "destination_info",
+      "patterns": [
+        "Tell me about ",
+        "What can you tell me about ",
+        "Information about ",
+        "Tell me more about ",
+        "I want to know about ",
+        "Can you provide details about ",
+        "What is  like",
+        "Describe "
+      ],
+      "responses": [
+        " is a wonderful destination! What specific information would you like to know about it?",
+        "I'd be happy to tell you about ! What aspects interest you most?",
+        " is a popular destination. Would you like to know about attractions, weather, or travel tips?"
+      ]
+    },
+    {
+      "tag": "weather_info",
+      "patterns": [
+        "What is the weather like in ",
+        "Current weather in ",
+        "Weather forecast for ",
+        "Is it raining in ",
+        "Temperature in ",
+        "Climate in ",
+        "Weather conditions in "
+      ],
+      "responses": [
+        "I can help you check the current weather in . Let me get that information for you.",
+        "The weather in  varies by season. Would you like current conditions or a forecast?",
+        "I'll need to check the latest weather data for . Can you give me a moment?"
+      ]
+    },
+    {
       "tag": "greeting",
       "patterns": [
         "Hi",

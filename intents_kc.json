@@ -1,0 +1,910 @@
+{
+  
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Is this a travel website?",
+        "Hey there",
+        "Good morning",
+        "Good evening"
+      ],
+      "responses": [
+        "Hello! Welcome to our tourism website. How can I assist you today?",
+        "Hi there! Planning your next trip?",
+        "Hello! Need help finding your dream destination?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Goodbye",
+        "Bye",
+        "See you later",
+        "Thanks, bye!",
+        "I'm done"
+      ],
+      "responses": [
+        "Goodbye! Have a great journey ahead!",
+        "Bye! We hope to see you again soon!",
+        "Take care and happy travels!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thanks for the info",
+        "Thank you very much"
+      ],
+      "responses": [
+        "You're welcome! Let us know if there's anything else you need.",
+        "Happy to help!",
+        "Anytime! Enjoy your journey."
+      ]
+    },
+    {
+      "tag": "travel_packages",
+      "patterns": [
+        "Do you offer travel packages?",
+        "Are there any deals on trips?",
+        "Show me some tour packages",
+        "What packages are available?"
+      ],
+      "responses": [
+        "We offer tailored travel packages, including group tours, family vacations, and honeymoon specials. Browse our website for details!",
+        "Yes, we have great deals on holiday packages. Would you like to hear about our current offers?",
+        "Our packages include adventure tours, beach getaways, and cultural experiences. Which type interests you?"
+      ]
+    },
+    {
+      "tag": "local_activities",
+      "patterns": [
+        "What activities can I do there?",
+        "Are there any local attractions?",
+        "What is there to do in this city?",
+        "Tell me about nearby places to visit"
+      ],
+      "responses": [
+        "You can enjoy activities such as sightseeing, hiking, and exploring local markets. Would you like specific recommendations?",
+        "This location offers museums, scenic walks, and adventure sports. Which one would you prefer?",
+        "From historical tours to culinary delights, there's something for everyone! Need more details?"
+      ]
+    },
+    {
+      "tag": "travel_requirements",
+      "patterns": [
+        "Do I need a visa for this destination?",
+        "What travel documents are required?",
+        "Are there any COVID-19 restrictions?",
+        "Tell me about travel rules"
+      ],
+      "responses": [
+        "Visa and travel requirements vary by destination. Would you like guidance for a specific country?",
+        "COVID-19 protocols are updated regularly. Please check our travel advisories for the latest information.",
+        "Ensure your passport is valid, and let us know if you need help with visa applications."
+      ]
+    },
+    {
+      "tag": "travel_support",
+      "patterns": [
+        "Can I change my booking?",
+        "What if I need to cancel my trip?",
+        "How do I get a refund?",
+        "Can you help with travel insurance?"
+      ],
+      "responses": [
+        "You can modify bookings through our website or by contacting support. Would you like assistance?",
+        "Cancellations are subject to our policy. Would you like to review it?",
+        "We can guide you through refunds and insurance options. Let us know what you need!"
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a travel joke!",
+        "Say something funny",
+        "Do you know any jokes about vacations?"
+      ],
+      "responses": [
+        "Why did the tourist bring a ladder? To reach new heights!",
+        "I told my suitcase we're not going on vacation. Now I'm dealing with emotional baggage.",
+        "Why don’t mountains get tired? They stay in peak condition!"
+      ]
+    },
+    {
+      "tag": "destination_europe",
+      "patterns": [
+        "Tell me about travel packages for Europe",
+        "What can I see in Europe?",
+        "Do you have tours for European countries?",
+        "Is there a package for Paris or Italy?"
+      ],
+      "responses": [
+        "Europe has incredible destinations like Paris, Rome, and Barcelona. We offer cultural tours, culinary experiences, and historical explorations. Which one interests you?",
+        "Our European packages include visits to iconic landmarks, guided city tours, and customizable itineraries. Would you like more details?",
+        "Discover the beauty of Europe with our packages. Let us know your preferred countries, and we can assist!"
+      ]
+    },
+    {
+      "tag": "destination_asia",
+      "patterns": [
+        "What are the best places to visit in Asia?",
+        "Do you have Asian travel packages?",
+        "Can I book a trip to Bali or Thailand?",
+        "Show me options for Asia travel"
+      ],
+      "responses": [
+        "Asia offers beautiful destinations like Bali, Phuket, and Kyoto. Our packages include beach resorts, cultural activities, and guided tours. Want to know more?",
+        "Explore Asia with our curated packages featuring must-visit spots like the Great Wall of China and Angkor Wat. Ready to book?",
+        "We provide customized trips across Asia. Let us help you plan your adventure!"
+      ]
+    },
+    {
+      "tag": "destination_adventure",
+      "patterns": [
+        "Are there adventure travel options?",
+        "What packages do you have for adventurous people?",
+        "Can I go on a trekking tour?",
+        "Do you offer mountain expeditions?"
+      ],
+      "responses": [
+        "We offer thrilling adventure tours, including trekking in the Himalayas, safaris in Africa, and scuba diving in the Maldives. What excites you?",
+        "For adrenaline seekers, our packages feature bungee jumping, mountain climbing, and river rafting. Let us know your preference!",
+        "Discover your adventurous side with our specially curated tours. Need help choosing the right one?"
+      ]
+    },
+    {
+      "tag": "destination_romantic",
+      "patterns": [
+        "Do you have honeymoon packages?",
+        "What romantic destinations do you recommend?",
+        "Show me packages for couples",
+        "Any deals for a romantic getaway?"
+      ],
+      "responses": [
+        "For a perfect romantic escape, we offer honeymoon packages in the Maldives, Santorini, and Bora Bora. Shall we help you plan?",
+        "Couples love destinations like Venice, Paris, and Maui. Our packages include exclusive experiences for two. Interested?",
+        "Celebrate love with our romantic getaways. Let us know your dream destination!"
+      ]
+    },
+    {
+      "tag": "manali_info",
+      "patterns": [
+        "Tell me about Manali",
+        "What are the top attractions in Manali?",
+        "Best time to visit Manali?",
+        "Is Manali good for honeymoon?",
+        "What is Manali famous for?",
+        "How to reach Manali?"
+      ],
+      "responses": [
+        "Manali is a beautiful hill station nestled in the Himalayas, known for its scenic landscapes, adventure activities, and peaceful retreats.",
+        "Top attractions in Manali include the Solang Valley, Rohtang Pass, Hidimba Temple, and Old Manali. Do you want details about any specific place?",
+        "The best time to visit Manali is from October to June. For snow, plan your trip in winter!",
+        "Manali is an excellent destination for honeymooners with cozy resorts, snowfall in winter, and romantic landscapes.",
+        "Manali is famous for its natural beauty, adventure sports like paragliding and trekking, and its vibrant culture.",
+        "You can reach Manali by road via well-connected highways, or take a flight to the nearest airport in Bhuntar, about 50 km away."
+      ]
+    },
+    {
+      "tag": "manali_activities",
+      "patterns": [
+        "What are some adventure activities in Manali?",
+        "Can I go trekking in Manali?",
+        "Is there skiing in Manali?",
+        "What are fun things to do in Manali?",
+        "Are there any water sports in Manali?",
+        "Where can I do paragliding in Manali?"
+      ],
+      "responses": [
+        "Manali offers many adventure activities like paragliding in Solang Valley, skiing in winter, and trekking to places like Hampta Pass and Beas Kund.",
+        "Yes, trekking is one of the best ways to explore the beauty of Manali. The Hampta Pass and Deo Tibba trails are popular options.",
+        "During winters, you can enjoy skiing at Solang Valley or nearby snow points.",
+        "Apart from adventure sports, you can visit cozy cafes, shop for local crafts, and relax at natural hot springs in Vashisht Village.",
+        "While Manali doesn’t have water sports in the true sense, rafting is popular near Kullu, just a short drive away.",
+        "Paragliding in Solang Valley is a must-try experience! It offers breathtaking views of the snow-capped peaks."
+      ]
+    },
+    {
+      "tag": "manali_stay",
+      "patterns": [
+        "Where can I stay in Manali?",
+        "Best hotels in Manali?",
+        "Are there any luxury resorts in Manali?",
+        "What are budget-friendly accommodations in Manali?",
+        "Which area is good to stay in Manali?",
+        "Can I find homestays in Manali?"
+      ],
+      "responses": [
+        "Manali offers accommodations for every budget. You can find luxury resorts, boutique hotels, and affordable stays.",
+        "Some of the best hotels in Manali include The Himalayan, Span Resort and Spa, and Manu Allaya Resort.",
+        "For a luxurious experience, you can stay at resorts like the Sterling Manali or Anantmaya Resort.",
+        "Budget travelers can explore guesthouses in Old Manali or backpacker hostels for affordable yet comfortable stays.",
+        "Old Manali is ideal for a laid-back experience with great cafes, while New Manali offers proximity to the bus stand and shopping areas.",
+        "Yes, Manali has many homestays offering an authentic Himachali experience. The surrounding villages like Vashisht and Naggar are great for serene options."
+      ]
+    },
+    {
+      "tag": "manali_transport",
+      "patterns": [
+        "How can I get to Manali?",
+        "Is there an airport near Manali?",
+        "Can I travel to Manali by train?",
+        "Are buses available for Manali?",
+        "What is the nearest airport to Manali?",
+        "Can I drive to Manali from Delhi?"
+      ],
+      "responses": [
+        "Manali is accessible by road, with regular bus services from Delhi, Chandigarh, and other major cities.",
+        "The nearest airport to Manali is Bhuntar Airport, approximately 50 km away. From there, you can hire a taxi or take a bus.",
+        "Although Manali doesn't have a direct train connection, you can take a train to Chandigarh or Kalka and continue the journey by road.",
+        "Yes, there are state and private buses to Manali from cities like Delhi and Chandigarh. Volvo buses offer a comfortable option.",
+        "Bhuntar Airport is the nearest airport to Manali, about an hour and a half's drive away.",
+        "Yes, driving to Manali from Delhi is possible via the NH3 highway, and it's a scenic 12-14 hour road trip."
+      ]
+    },
+    {
+      "tag": "travel_locations_info",
+      "patterns": [
+        "Tell me about popular travel locations in India",
+        "What are the top tourist destinations in India?",
+        "Best travel places in India?",
+        "Which are must-visit places in India?",
+        "Can you suggest some travel spots in India?",
+        "What are the best holiday destinations in India?"
+      ],
+      "responses": [
+        "India has diverse travel destinations like the Taj Mahal in Agra, Jaipur in Rajasthan, Kerala's backwaters, Goa's beaches, and the Himalayan hill stations.",
+        "Some must-visit destinations in India include the Golden Triangle (Delhi, Agra, Jaipur), Varanasi, Kerala, Goa, and Ladakh.",
+        "For nature enthusiasts, Kerala, Himachal Pradesh, and Uttarakhand offer breathtaking views and serene experiences.",
+        "Are you looking for cultural, adventure, or beach destinations? India offers something for every traveler!"
+      ]
+    },
+    {
+      "tag": "beach_destinations",
+      "patterns": [
+        "What are the best beach destinations in India?",
+        "Can you recommend places for beach vacations in India?",
+        "Which are the most famous beaches in India?",
+        "What are the top beach locations in India?",
+        "Where can I enjoy beach activities in India?",
+        "Are there private beaches in India?"
+      ],
+      "responses": [
+        "Goa is a top beach destination in India, famous for its vibrant nightlife, water sports, and sandy beaches like Calangute and Baga.",
+        "Kerala's Kovalam and Varkala beaches are perfect for relaxing with scenic beauty and Ayurvedic retreats.",
+        "Other famous beaches include Marina Beach in Chennai, Radhanagar Beach in the Andaman Islands, and Puri Beach in Odisha.",
+        "You can enjoy activities like parasailing, jet-skiing, and scuba diving at beaches in Goa and the Andaman Islands."
+      ]
+    },
+    {
+      "tag": "hill_stations",
+      "patterns": [
+        "Which are the best hill stations in India?",
+        "What are top mountain destinations in India?",
+        "Can you suggest some hill stations in India?",
+        "What are cool places to visit in summer in India?",
+        "What are famous hill stations in North India?",
+        "Where can I find snow-covered mountains in India?"
+      ],
+      "responses": [
+        "India boasts incredible hill stations like Shimla, Manali, Mussoorie, and Nainital in North India, and Munnar, Ooty, and Coorg in South India.",
+        "For snow-covered destinations, visit Gulmarg and Sonmarg in Kashmir or Auli in Uttarakhand during winter.",
+        "Darjeeling and Kalimpong in the East offer tea gardens and breathtaking views of the Himalayas.",
+        "If you're looking for a laid-back mountain vibe, try McLeodganj or Kasol in Himachal Pradesh."
+      ]
+    },
+    {
+      "tag": "cultural_destinations",
+      "patterns": [
+        "What are some cultural travel destinations in India?",
+        "Where can I explore India's heritage?",
+        "Best places for cultural tourism in India?",
+        "Can you suggest places with historical significance in India?",
+        "What are famous temples in India?",
+        "Where can I experience traditional Indian culture?"
+      ],
+      "responses": [
+        "Explore the Taj Mahal in Agra, Jaipur's palaces, and Udaipur's royal heritage for a deep dive into India's historical architecture.",
+        "For spiritual experiences, visit Varanasi, Rishikesh, or the temples of Tamil Nadu like Meenakshi Temple and Brihadeeswarar Temple.",
+        "Hampi, a UNESCO World Heritage Site, offers stunning ruins of ancient India.",
+        "Kolkata's Durga Puja and Rajasthan's Pushkar Fair are great for witnessing Indian traditions and festivals."
+      ]
+    },
+    {
+      "tag": "wildlife_destinations",
+      "patterns": [
+        "What are the best places for wildlife in India?",
+        "Which are famous national parks in India?",
+        "Where can I go for a safari in India?",
+        "Can you recommend wildlife sanctuaries in India?",
+        "What are top wildlife destinations in India?",
+        "Where can I spot tigers in India?"
+      ],
+      "responses": [
+        "India is home to amazing wildlife parks like Ranthambore National Park in Rajasthan and Jim Corbett National Park in Uttarakhand for tiger spotting.",
+        "Kaziranga National Park in Assam is famous for its one-horned rhinoceroses.",
+        "Explore Periyar Wildlife Sanctuary in Kerala for a blend of nature and wildlife.",
+        "Sundarbans in West Bengal offers a chance to spot the elusive Royal Bengal Tiger."
+      ]
+    },
+    {
+      "tag": "adventure_destinations",
+      "patterns": [
+        "Where can I go for adventure travel in India?",
+        "What are top trekking destinations in India?",
+        "Best places for adventure sports in India?",
+        "Can I try paragliding in India?",
+        "What are fun adventure spots in India?",
+        "Where can I find trekking routes in India?"
+      ],
+      "responses": [
+        "For trekking, try routes like Hampta Pass in Himachal, Chadar Trek in Ladakh, or Valley of Flowers in Uttarakhand.",
+        "Rishikesh is perfect for white-water rafting and bungee jumping.",
+        "Manali and Bir Billing in Himachal Pradesh offer great paragliding experiences.",
+        "Andaman Islands and Goa are ideal for scuba diving and snorkeling."
+      ]
+    },
+    {
+      "tag": "festive_destinations",
+      "patterns": [
+        "Where can I celebrate festivals in India?",
+        "Which are famous places for Holi in India?",
+        "Best places for Diwali celebrations?",
+        "What are famous festive destinations in India?",
+        "Can I experience Indian festivals as a tourist?",
+        "What are top spots for Durga Puja in India?"
+      ],
+      "responses": [
+        "Celebrate Holi in Vrindavan and Mathura, where the festival is celebrated with vibrant colors and traditions.",
+        "Diwali is best experienced in Jaipur and Varanasi, where the lights and rituals create magical atmospheres.",
+        "Durga Puja in Kolkata is a must-see for its grandeur and cultural immersion.",
+        "Other festive destinations include Pushkar during the Camel Fair and Goa during Christmas and New Year celebrations."
+      ]
+    },
+    {
+      "tag": "budget_trip_info",
+      "patterns": [
+        "What are some budget-friendly travel packages in India?",
+        "Can you suggest economical travel plans?",
+        "How can I plan a trip to India on a budget?",
+        "Affordable holiday packages in India?",
+        "What is the cost of budget trips in India?",
+        "Share affordable trip itineraries for India."
+      ],
+      "responses": [
+        "India offers many budget-friendly travel options, including the Golden Triangle, Himachal Pradesh, Goa, and Kerala. You can plan trips starting as low as ₹3,000 per person.",
+        "Affordable itineraries include Delhi-Agra-Jaipur tours, Rishikesh for adventure activities, and Goa for a beach getaway on a budget.",
+        "Check out budget stays, use local transport, and book in advance to make the most of your trip without spending much.",
+        "Would you like detailed information on a specific destination or trip package?"
+      ]
+    },
+    {
+      "tag": "golden_triangle_trip",
+      "patterns": [
+        "Tell me about the Golden Triangle tour in India.",
+        "What is the Golden Triangle package?",
+        "Can you give details about Delhi-Agra-Jaipur tours?",
+        "How can I plan a Golden Triangle trip?",
+        "What attractions are covered in the Golden Triangle tour?",
+        "What is the budget for the Golden Triangle trip?"
+      ],
+      "responses": [
+        "The Golden Triangle tour includes Delhi, Agra, and Jaipur, covering landmarks like the Red Fort, Taj Mahal, and Amer Fort. A 5-day budget tour costs around ₹8,000–₹15,000 per person.",
+        "This package offers budget accommodations, shared or private cabs, and visits to famous historical and cultural landmarks.",
+        "Using public transport and enjoying local cuisine can make your trip more economical."
+      ]
+    },
+    {
+      "tag": "himachal_pradesh_trip",
+      "patterns": [
+        "What is a budget trip to Himachal Pradesh?",
+        "How much does a Shimla-Manali tour cost?",
+        "Can you suggest cheap travel plans for Himachal?",
+        "What are the major attractions in Shimla and Manali?",
+        "Tips for planning a budget Himachal trip?"
+      ],
+      "responses": [
+        "A 6-day Shimla-Manali trip costs around ₹10,000–₹18,000 per person, covering Kufri, Mall Road, Solang Valley, and Hadimba Temple.",
+        "Travel by overnight Volvo buses, stay in budget hotels or homestays, and visit during off-peak seasons like March or September for lower costs.",
+        "Activities like paragliding and trekking are available at affordable rates in Himachal."
+      ]
+    },
+    {
+      "tag": "rishikesh_trip",
+      "patterns": [
+        "What is the cost of a Rishikesh trip?",
+        "What activities are available in Rishikesh?",
+        "Can I plan a budget trip to Rishikesh?",
+        "What is included in a Rishikesh-Haridwar package?",
+        "How much does rafting cost in Rishikesh?"
+      ],
+      "responses": [
+        "A 3-day Rishikesh-Haridwar trip costs ₹4,000–₹8,000 per person, including accommodation, rafting, and visiting the Ganga Aarti.",
+        "Budget stays like ashrams or camping and affordable transport options from Delhi make it a cost-effective adventure.",
+        "You can enjoy rafting, bungee jumping, and spiritual activities during your trip."
+      ]
+    },
+    {
+      "tag": "goa_trip",
+      "patterns": [
+        "What is the cost of a Goa trip?",
+        "Can you suggest a budget package for Goa?",
+        "How can I plan a cheap Goa beach vacation?",
+        "What are the main attractions in Goa?",
+        "Is visiting Goa affordable?"
+      ],
+      "responses": [
+        "A 4-day Goa trip can cost around ₹6,000–₹12,000 per person, covering budget stays, scooter rentals, and beach visits.",
+        "Explore Baga Beach, Anjuna Beach, and the Basilica of Bom Jesus while enjoying Goa's vibrant nightlife.",
+        "Book train travel or flights in advance and visit during off-seasons for lower costs."
+      ]
+    },
+    {
+      "tag": "kerala_trip",
+      "patterns": [
+        "What is included in a budget Kerala tour?",
+        "How much does a Kerala backwaters trip cost?",
+        "Can you suggest a cheap Kerala vacation plan?",
+        "What are the main attractions in Kerala?",
+        "Is it possible to do a budget trip to Munnar and Alleppey?"
+      ],
+      "responses": [
+        "A 5-day Kerala trip costs ₹12,000–₹20,000 per person, including homestays, local transport, and visits to Alleppey's backwaters, Kochi's attractions, and Munnar's tea gardens.",
+        "You can save money by booking shared houseboats and traveling by local buses or trains.",
+        "Explore the serene backwaters, enjoy nature walks in Munnar, and visit historic Fort Kochi."
+      ]
+    },
+    {
+      "tag": "trekking_packages",
+      "patterns": [
+        "What are the best treks in India?",
+        "How can I plan a budget trekking trip?",
+        "What is the cost of trekking in India?",
+        "Can you provide details about trekking packages?",
+        "What are some easy treks in India?"
+      ],
+      "responses": [
+        "Some of the best treks in India include Kedarkantha, Brahmatal, and Hampta Pass. Packages from organizations like Trek the Himalayas and Indiahikes cover meals, accommodations, and trek guides.",
+        "Easy treks like Kedarkantha are available for beginners, while challenging options include the Chadar and Goechala treks.",
+        "Trek costs range from ₹5,000 to ₹20,000 depending on the duration and difficulty."
+      ]
+    },
+    {
+      "tag": "golden_triangle_trip",
+      "patterns": [
+        "What is the Golden Triangle tour in India?",
+        "Tell me about Delhi, Agra, and Jaipur tour packages.",
+        "Plan a 6-day heritage trip to Delhi, Agra, and Jaipur.",
+        "Share a Golden Triangle itinerary."
+      ],
+      "responses": [
+        "The Golden Triangle itinerary covers Delhi, Agra, and Jaipur in 6 days. You explore historical landmarks like the Taj Mahal, Red Fort, Amer Fort, and vibrant markets. Would you like me to provide a detailed plan?"
+      ]
+    },
+    {
+      "tag": "himalayan_bliss_trip",
+      "patterns": [
+        "Plan a Himachal trip to Shimla, Manali, and Dharamshala.",
+        "What are the must-visit places in Himachal Pradesh?",
+        "Can you share a 7-day itinerary for Shimla, Manali, and Dharamshala?",
+        "Suggest a peaceful Himalayan vacation plan."
+      ],
+      "responses": [
+        "The Himalayan Bliss trip spans 7 days covering Shimla, Manali, and Dharamshala, with highlights like Mall Road, Solang Valley, Dalai Lama Temple, and Bhagsunag Falls. Would you like to book this journey or know more details?"
+      ]
+    },
+    {
+      "tag": "goa_coastal_retreat",
+      "patterns": [
+        "Suggest a Goa beach holiday itinerary.",
+        "What should I do on a 5-day trip to Goa?",
+        "Plan a beach vacation in Goa.",
+        "Can you share a Goa coastal retreat itinerary?"
+      ],
+      "responses": [
+        "The Goa Coastal Retreat offers a perfect 5-day beach vacation, exploring North and South Goa beaches like Baga, Vagator, and Palolem, and activities like scuba diving and dolphin spotting. Would you like me to customize this plan for you?"
+      ]
+    },
+    {
+      "tag": "kerala_backwaters_trip",
+      "patterns": [
+        "Plan a 7-day Kerala trip for me.",
+        "What are the highlights of the Kerala backwaters tour?",
+        "Share a detailed itinerary for Munnar, Alleppey, and Kochi.",
+        "Suggest a peaceful retreat to Kerala."
+      ],
+      "responses": [
+        "A 7-day Kerala trip includes Kochi, Munnar, Alleppey backwaters, and Thekkady. Enjoy tea gardens, houseboat stays, and wildlife activities. Can I assist you in tailoring this trip?"
+      ]
+    },
+    {
+      "tag": "northeast_adventure_trip",
+      "patterns": [
+        "Plan a Northeast India itinerary for 8 days.",
+        "Suggest a trip covering Shillong, Cherrapunji, and Kaziranga.",
+        "What are the top destinations in Northeast India?",
+        "Can you provide an adventure trip plan for Shillong and Kaziranga?"
+      ],
+      "responses": [
+        "The Northeast Adventure tour covers Shillong, Cherrapunji, and Kaziranga over 8 days with visits to Umiam Lake, Mawlynnong, and Kaziranga National Park safaris. Would you like me to assist with bookings?"
+      ]
+    },
+    {
+      "tag": "spiritual_sojourn_trip",
+      "patterns": [
+        "What is the best itinerary for a spiritual trip to Varanasi, Rishikesh, and Haridwar?",
+        "Plan a spiritual journey for 6 days.",
+        "Suggest a holy trip for Varanasi and Rishikesh.",
+        "What are the must-visit spiritual destinations in India?"
+      ],
+      "responses": [
+        "The Spiritual Sojourn includes Varanasi, Rishikesh, and Haridwar over 6 days, with highlights like Ganga Aarti, Kashi Vishwanath Temple, Ram Jhula, and yoga sessions. Shall I provide further details?"
+      ]
+    },
+    {
+      "tag": "leh_ladakh_trip",
+      "patterns": [
+        "Plan an 8-day trip to Leh-Ladakh.",
+        "What is the best Leh-Ladakh circuit itinerary?",
+        "Suggest an adventure trip covering Pangong Lake and Nubra Valley.",
+        "Share details of a Ladakh travel plan."
+      ],
+      "responses": [
+        "The Leh-Ladakh circuit includes iconic spots like Magnetic Hill, Nubra Valley, Pangong Lake, and local markets over 8 days. Would you like help in planning this breathtaking adventure?"
+      ]
+    },
+    {
+      "tag": "winter_travel_destinations",
+      "patterns": [
+        "Where should I go during winter in India?",
+        "Can you suggest winter destinations in India?",
+        "What are the best places to visit in winter in India?",
+        "Tell me about snow destinations in India for winter."
+      ],
+      "responses": [
+        "Winter in India is perfect for snow destinations like Shimla, Manali, Auli, and Gulmarg. You can also explore Rajasthan's heritage sites or the festive vibes in Goa. Would you like more information on these?"
+      ]
+    },
+    {
+      "tag": "summer_travel_destinations",
+      "patterns": [
+        "Where can I escape the heat in summer in India?",
+        "What are the best hill stations to visit during summer?",
+        "Suggest places to visit in India during summer.",
+        "Plan a cool summer retreat for me in India."
+      ],
+      "responses": [
+        "Summer in India is ideal for hill stations like Darjeeling, Gangtok, Nainital, and Manali. You can also explore the Western Ghats in Munnar or Coorg. Let me know if you need detailed itineraries for these."
+      ]
+    },
+    {
+      "tag": "monsoon_travel_destinations",
+      "patterns": [
+        "Where should I visit during the monsoon season in India?",
+        "What are the best places to visit in India during the monsoon?",
+        "Tell me about destinations to explore in monsoon in India.",
+        "Which places are perfect for monsoon travel in India?"
+      ],
+      "responses": [
+        "Monsoon brings lush greenery and vibrant landscapes. You can visit places like Munnar, Wayanad, Lonavala, and Cherrapunji. There are also amazing wildlife sanctuaries to explore, like Periyar and Kabini. Would you like to know more details on these?"
+      ]
+    },
+    {
+      "tag": "autumn_travel_destinations",
+      "patterns": [
+        "What are the best places to visit in autumn in India?",
+        "Can you suggest a travel plan for autumn in India?",
+        "What destinations are ideal for autumn travel in India?",
+        "Tell me about autumn travel experiences in India."
+      ],
+      "responses": [
+        "Autumn in India is perfect for visits to places like Kashmir, Bandhavgarh, Kanha, and Darjeeling. The weather is mild, and you can enjoy outdoor activities and scenic landscapes. Let me know if you'd like an itinerary for these destinations."
+      ]
+    },
+    {
+      "tag": "seasonal_activity_recommendations",
+      "patterns": [
+        "What activities can I do in India during winter/summer/monsoon/autumn?",
+        "Give me activity suggestions for different seasons in India.",
+        "What activities are popular in India during winter, summer, monsoon, and autumn?",
+        "Can you recommend activities based on the season?"
+      ],
+      "responses": [
+        "Depending on the season, activities include snow adventures and heritage tours in winter, trekking and road trips in summer, nature walks and waterfall treks in the monsoon, and wildlife safaris and sightseeing during autumn. Let me know your preference, and I can plan a trip for you."
+      ]
+    },
+    {
+      "tag": "north_india_tourist_spots",
+      "patterns": [
+        "What are the best places to visit in North India?",
+        "Can you recommend tourist spots in Delhi, Agra, and Rajasthan?",
+        "What are the must-visit places in North India?",
+        "Tell me about tourist destinations in North India."
+      ],
+      "responses": [
+        "North India offers a range of attractions, from historical sites like the Red Fort in Delhi and Taj Mahal in Agra to the palaces of Jaipur and the serene lakes in Udaipur. Leh-Ladakh and Varanasi are also top destinations. Would you like details on any specific city?"
+      ]
+    },
+    {
+      "tag": "south_india_tourist_spots",
+      "patterns": [
+        "What are some top destinations in South India?",
+        "Can you suggest places to visit in Kerala and Tamil Nadu?",
+        "What are the best tourist spots in South India?",
+        "Give me a list of must-see places in South India."
+      ],
+      "responses": [
+        "South India is known for its rich cultural heritage and natural beauty. Visit Kerala's backwaters, enjoy the hills of Ooty, explore Mysore Palace, or dive into the historic temples of Tamil Nadu. Would you like more information on any destination?"
+      ]
+    },
+    {
+      "tag": "west_india_tourist_spots",
+      "patterns": [
+        "Where should I go in West India?",
+        "What are the famous tourist attractions in Gujarat and Maharashtra?",
+        "Can you tell me about Goa and Mumbai?",
+        "Recommend must-visit places in West India."
+      ],
+      "responses": [
+        "West India offers the bustling metropolis of Mumbai, the serene beaches of Goa, and historical sites like the Rann of Kutch and the Gir National Park. Want more details on any of these locations?"
+      ]
+    },
+    {
+      "tag": "east_india_tourist_spots",
+      "patterns": [
+        "What are the best places to visit in East India?",
+        "Can you recommend tourist destinations in Kolkata and Odisha?",
+        "Tell me about the top attractions in East India.",
+        "Where should I travel in East India?"
+      ],
+      "responses": [
+        "East India has incredible destinations, including the Victoria Memorial in Kolkata, the temples of Puri, and Darjeeling's scenic beauty. Let me know if you'd like more details about any specific place!"
+      ]
+    },
+    {
+      "tag": "northeast_india_tourist_spots",
+      "patterns": [
+        "Where should I visit in Northeast India?",
+        "Recommend places to see in Shillong, Gangtok, and Arunachal Pradesh.",
+        "Tell me about tourist attractions in Northeast India.",
+        "What are the key tourist destinations in Northeast India?"
+      ],
+      "responses": [
+        "Northeast India is home to some breathtaking destinations, including the Umiam Lake in Shillong, Kaziranga National Park in Assam, and Tsomgo Lake in Sikkim. Would you like more information on a particular place?"
+      ]
+    },
+    {
+      "tag": "central_india_tourist_spots",
+      "patterns": [
+        "What can I see in Central India?",
+        "Tell me about tourism in Madhya Pradesh.",
+        "What are the famous tourist spots in Central India?",
+        "Give me suggestions for places to visit in Central India."
+      ],
+      "responses": [
+        "Central India is rich in historical significance, with the Khajuraho Temples and Bandhavgarh National Park being top attractions. You can also visit the Sanchi Stupa for a historical experience. Would you like an itinerary?"
+      ]
+    },
+    {
+      "tag": "islands_tourist_spots",
+      "patterns": [
+        "What are the best islands to visit in India?",
+        "Where should I go in the Andaman and Nicobar Islands?",
+        "Tell me about Lakshadweep and Andaman Islands.",
+        "What are the must-see islands in India?"
+      ],
+      "responses": [
+        "India offers stunning island destinations like Radhanagar Beach in the Andaman Islands and scenic Agatti Island in Lakshadweep. Do you want to know more about these locations?"
+      ]
+    },
+    {
+      "tag": "historical_sites_india",
+      "patterns": [
+        "Tell me about the historical sites in India.",
+        "What are the key historical tourist attractions in India?",
+        "Can you list the important historical destinations in India?",
+        "What historical places should I visit in India?"
+      ],
+      "responses": [
+        "India boasts incredible historical sites, such as the Taj Mahal, Red Fort, and Qutub Minar in North India, as well as ancient temples and forts in South and West India. Are there any specific places you’re interested in?"
+      ]
+    },
+    {
+      "tag": "cultural_significance_india",
+      "patterns": [
+        "What cultural destinations should I visit in India?",
+        "Tell me about the cultural importance of Varanasi and other cities.",
+        "Where can I experience Indian culture?",
+        "Which cities in India are culturally significant?"
+      ],
+      "responses": [
+        "Culturally rich destinations include Varanasi, known for its spiritual importance, as well as cities like Kolkata, which are steeped in arts, traditions, and festivals. Would you like to dive into one of these cities more?"
+      ]
+    },
+    {
+      "tag": "natural_significance_india",
+      "patterns": [
+        "What natural wonders should I visit in India?",
+        "Tell me about India's best natural tourist attractions.",
+        "Which natural destinations are must-see in India?",
+        "Can you suggest some natural wonders in India?"
+      ],
+      "responses": [
+        "India is home to diverse natural wonders, including the Grand Canyon-like landscapes of the Rann of Kutch and the beautiful tea gardens of Munnar. If you prefer wildlife, check out Kaziranga National Park or Ranthambore. Want to explore a specific region?"
+      ]
+    },
+    {
+      "tag": "modern_marvels_tourism",
+      "patterns": [
+        "What modern marvels should I see in India?",
+        "Tell me about India's best modern architectural wonders.",
+        "Where can I see modern engineering feats in India?",
+        "What modern landmarks are popular in India?"
+      ],
+      "responses": [
+        "Modern marvels like the Akshardham Temple in Delhi, the Gateway of India in Mumbai, and futuristic architectures like the Lotus Temple are among India's most striking attractions. Interested in any of these landmarks?"
+      ]
+    },
+    {
+      "tag": "tourism_websites_india",
+      "patterns": [
+        "What are the best tourism websites for India?",
+        "Tell me about Indian travel agencies and tour packages.",
+        "Where can I book a tour of India?",
+        "Which platforms offer tourism services in India?"
+      ],
+      "responses": [
+        "Some great Indian tourism websites include Incredible India, IRCTC Tourism, TravelTriangle, and Akbar Holidays, offering customized packages and travel experiences. Would you like more details on any specific site?"
+      ]
+    },
+    {
+      "tag": "cultural_heritage_sites",
+      "patterns": [
+        "What are some cultural UNESCO World Heritage Sites in India?",
+        "Can you tell me about cultural heritage sites in India?",
+        "Which cultural heritage sites are famous in India?",
+        "What are the key cultural landmarks in India?"
+      ],
+      "responses": [
+        "India has a rich collection of cultural UNESCO World Heritage Sites, such as the Taj Mahal in Agra, the Ajanta and Ellora Caves in Maharashtra, and the temples of Khajuraho. Would you like more details on any specific site?"
+      ]
+    },
+    {
+      "tag": "taj_mahal",
+      "patterns": [
+        "Tell me about the Taj Mahal in Agra.",
+        "Why is the Taj Mahal famous?",
+        "What makes the Taj Mahal a UNESCO World Heritage site?",
+        "What is the history behind the Taj Mahal?"
+      ],
+      "responses": [
+        "The Taj Mahal in Agra is one of the most iconic monuments in the world, built by Emperor Shah Jahan in memory of his wife Mumtaz Mahal. It is renowned for its stunning white marble architecture and symbolizes eternal love."
+      ]
+    },
+    {
+      "tag": "ajanta_ellora_caves",
+      "patterns": [
+        "What are the Ajanta and Ellora Caves?",
+        "Can you tell me about the Ajanta Caves and Ellora Caves?",
+        "What is significant about Ajanta and Ellora Caves?",
+        "Where are the Ajanta and Ellora Caves located?"
+      ],
+      "responses": [
+        "The Ajanta and Ellora Caves in Maharashtra feature intricate rock-cut temples and monasteries, along with beautiful sculptures and paintings. These sites are significant for their artistic and religious history."
+      ]
+    },
+    {
+      "tag": "hampi",
+      "patterns": [
+        "Tell me about Hampi.",
+        "What is Hampi known for?",
+        "What can I see in Hampi?",
+        "Where is Hampi located?"
+      ],
+      "responses": [
+        "Hampi, located in Karnataka, is known for its historic ruins from the Vijayanagara Empire. The site boasts stunning temples, palaces, and fortifications, reflecting the grandeur and power of the ancient empire."
+      ]
+    },
+    {
+      "tag": "fatehpur_sikri",
+      "patterns": [
+        "What is Fatehpur Sikri?",
+        "Can you tell me about Fatehpur Sikri?",
+        "Where is Fatehpur Sikri and why is it famous?",
+        "Tell me the history of Fatehpur Sikri."
+      ],
+      "responses": [
+        "Fatehpur Sikri is a historical city located in Uttar Pradesh, built by Emperor Akbar. The city is famous for its architecture, including the grand Buland Darwaza and other well-preserved monuments."
+      ]
+    },
+    {
+      "tag": "red_fort",
+      "patterns": [
+        "Tell me about the Red Fort in Delhi.",
+        "Why is the Red Fort important?",
+        "What makes the Red Fort a UNESCO World Heritage site?",
+        "Can you describe the Red Fort?"
+      ],
+      "responses": [
+        "The Red Fort in Delhi is a UNESCO World Heritage Site and symbolizes India’s Mughal heritage. It was once the residence of Mughal emperors and features magnificent architecture, including grand gates, museums, and gardens."
+      ]
+    },
+    {
+      "tag": "qutub_minar",
+      "patterns": [
+        "What is Qutub Minar?",
+        "Tell me about the Qutub Minar in Delhi.",
+        "What makes Qutub Minar a famous site?",
+        "Why is Qutub Minar a UNESCO World Heritage site?"
+      ],
+      "responses": [
+        "Qutub Minar is a towering victory minaret in Delhi, known for its stunning Indo-Islamic architecture. It is the tallest brick minaret in the world and is an important symbol of early Muslim rule in India."
+      ]
+    },
+    {
+      "tag": "natural_heritage_sites",
+      "patterns": [
+        "What are some natural UNESCO World Heritage Sites in India?",
+        "Tell me about natural heritage sites in India.",
+        "Which natural sites are UNESCO World Heritage Sites in India?",
+        "What are the major natural landmarks in India?"
+      ],
+      "responses": [
+        "India is also home to several important natural World Heritage Sites, such as the Sundarbans National Park, Western Ghats, and Kaziranga National Park, which showcase the country's rich biodiversity."
+      ]
+    },
+    {
+      "tag": "sundarbans_national_park",
+      "patterns": [
+        "Tell me about the Sundarbans National Park.",
+        "Where is Sundarbans National Park?",
+        "What is special about the Sundarbans National Park?",
+        "Why is Sundarbans a UNESCO World Heritage Site?"
+      ],
+      "responses": [
+        "Sundarbans National Park, located in West Bengal, is the world's largest mangrove forest and is home to a variety of species, including the Bengal tiger. Its unique ecosystem is vital for marine biodiversity."
+      ]
+    },
+    {
+      "tag": "western_ghats",
+      "patterns": [
+        "What are the Western Ghats?",
+        "Tell me about the Western Ghats in India.",
+        "Why are the Western Ghats important?",
+        "What makes the Western Ghats a UNESCO site?"
+      ],
+      "responses": [
+        "The Western Ghats are a mountain range spanning several states in India, known for their rich biodiversity, endemic species, and unique ecosystems. They are considered one of the world's eight hottest hotspots of biological diversity."
+      ]
+    },
+    {
+      "tag": "kaziranga_national_park",
+      "patterns": [
+        "What is Kaziranga National Park known for?",
+        "Tell me about Kaziranga National Park in Assam.",
+        "Where is Kaziranga National Park?",
+        "What makes Kaziranga a UNESCO World Heritage Site?"
+      ],
+      "responses": [
+        "Kaziranga National Park in Assam is renowned for being home to the one-horned rhinoceros, along with other endangered species. Its diverse wildlife and pristine environment make it a UNESCO World Heritage Site."
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+

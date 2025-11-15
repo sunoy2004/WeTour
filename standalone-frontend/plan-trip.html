@@ -1,0 +1,95 @@
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Firebase -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB5KfXqZ9vV9w9v9v9v9v9v9v9v9v9v9v9v",
+            authDomain: "wetour-xxxxx.firebaseapp.com",
+            projectId: "wetour-xxxxx",
+            storageBucket: "wetour-xxxxx.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef123456abcdef1234",
+            measurementId: "G-XXXXXXXXXX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Check auth state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                console.log("User is signed in");
+            } else {
+                // User is signed out
+                console.log("User is signed out");
+                // Redirect to login page
+                // window.location.href = 'index.html';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('tripForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                destination: document.getElementById('destination').value,
+                startDate: document.getElementById('startDate').querySelector('input').value,
+                endDate: document.getElementById('endDate').querySelector('input').value,
+                budget: document.getElementById('budget').value,
+                travelers: document.getElementById('travelers').value,
+                notes: document.getElementById('notes').value
+            };
+            
+            // Get selected interests
+            const interests = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                interests.push(checkbox.value);
+            });
+            formData.interests = interests;
+            
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Planning...';
+            submitButton.disabled = true;
+            
+            try {
+                // Add user ID if authenticated
+                const user = auth.currentUser;
+                if (user) {
+                    formData.userId = user.uid;
+                }
+                
+                // Add timestamp
+                formData.createdAt = new Date();
+                
+                // Save to Firestore
+                const docRef = await addDoc(collection(db, "tripPlans"), formData);
+                
+                alert('Your trip plan has been submitted successfully! We will get back to you soon.');
+                this.reset();
+            } catch (error) {
+                console.error('Error submitting trip plan:', error);
+                alert('An error occurred while submitting the trip plan. Please try again.');
+            } finally {
+                // Restore button state
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
