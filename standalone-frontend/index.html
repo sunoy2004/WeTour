@@ -102,6 +102,119 @@
         border: 1px solid #444;
         border-top: none;
     }
+    
+    /* Chatbox positioning - bottom left */
+    .chatbox-container {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 1000;
+    }
+    
+    /* Enhanced UI styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+    }
+    
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .carousel-item {
+        height: 100vh;
+        min-height: 300px;
+    }
+    
+    .carousel-caption {
+        bottom: 150px;
+        z-index: 2;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .booking {
+        margin-top: -100px;
+        z-index: 1;
+        position: relative;
+    }
+    
+    .destination-item {
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .destination-item:hover {
+        transform: translateY(-10px);
+    }
+    
+    .service-item, .package-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .service-item:hover, .package-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .team-item {
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .team-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .testimonial-carousel .testimonial-text {
+        transition: transform 0.3s ease;
+    }
+    
+    .testimonial-carousel .testimonial-text:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Dark mode enhancements */
+    body.dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    
+    body.dark-mode .bg-light {
+        background-color: #1e1e1e !important;
+    }
+    
+    body.dark-mode .shadow {
+        box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    body.dark-mode .carousel-caption h1,
+    body.dark-mode .carousel-caption h4 {
+        color: #fff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    body.dark-mode .booking .bg-light {
+        background-color: #2d2d2d !important;
+    }
+    
+    body.dark-mode .service-item,
+    body.dark-mode .package-item,
+    body.dark-mode .team-item {
+        background-color: #2d2d2d;
+    }
+    
+    body.dark-mode .testimonial-text {
+        background-color: #2d2d2d;
+    }
     </style>
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -129,7 +242,8 @@
     <title>WeTour</title>
 </head>
 <body>
-<div class="container">
+<!-- Chatbox moved to bottom left -->
+<div class="chatbox-container">
     <div class="chatbox">
         <div class="chatbox__support">
             <div class="chatbox__header">

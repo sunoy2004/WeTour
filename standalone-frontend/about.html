@@ -25,10 +25,21 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+        /* Chatbox positioning - bottom left */
+        .chatbox-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
+    <!-- Chatbox moved to bottom left -->
+    <div class="chatbox-container">
         <div class="chatbox">
             <div class="chatbox__support">
                 <div class="chatbox__header">
